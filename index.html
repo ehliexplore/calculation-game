@@ -57,9 +57,13 @@
                 setState((prevState) => ({ ...prevState, operation: randomOperation }));
             }, [state.num1, state.num2]);
 
+            function roundNumber(number, decimals = 9) {
+                return Number(number.toFixed(decimals));
+            }
+
             function inputKeyPress(event) {
                 if (event.key === "Enter") {
-                    const answer = parseInt(state.response);
+                    const answer = roundNumber(parseFloat(state.response));
                     let correctAnswer;
 
                     switch(state.operation) {
@@ -69,8 +73,10 @@
                         case '/': correctAnswer = state.num1 / state.num2; break;         
                     }
 
+                    correctAnswer = roundNumber(correctAnswer);
 
-                   if (correctAnswer === answer)  {
+                   if (Math.abs(correctAnswer - answer) < 1e-9) {
+
                     // User got the question right
                     setState({
                         ...state,

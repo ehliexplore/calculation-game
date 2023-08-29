@@ -6,7 +6,19 @@ function App() {
         response: "",
         score: 0,
         incorrect: false,
-        operation: '+'
+        operation: '+',
+        timeLeft: 30,
+    });
+
+    React.useEffect(() => {
+        const timer = setInterval(() => {
+            setState(prevState => ({
+                ...prevState,
+                timeLeft: Math.max(prevState.timeLeft - 1, 0)
+            }))
+        }, 1000);
+
+        return () => clearInterval(timer);
     })
 
     React.useEffect(() => {
@@ -74,10 +86,10 @@ function App() {
         })
     }
 
-    if (state.score === 10) {
+    if (state.score === 10 || state.timeLeft <= 0) {
         return (
             <div id="winner">
-                You won!
+                {state.score === 10 ? "You won!" : "Time's up!"}
             </div>
         );
     }
@@ -93,6 +105,8 @@ function App() {
             </div>
 
             <div className={"score"}>Score: {state.score}</div>
+
+            <div>Time left: {state.timeLeft} seconds</div>
         </div>
     );
 }

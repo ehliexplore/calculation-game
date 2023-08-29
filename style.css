@@ -44,6 +44,10 @@ body {
     
 }
 
+.input-style:hover {
+    transform: scale(1.05);
+}
+
 .enter-button {
     height: 50px;
     width: 70px;
@@ -52,6 +56,10 @@ body {
     background-color: black;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.enter-button:hover {
+    transform: scale(1.1);
 }
 
 .score {

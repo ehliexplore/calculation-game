@@ -68,10 +68,8 @@ function App() {
                 response: "",
                 incorrect: true
             });
-
            }
         }
-    
 
 
     function inputKeyPress(event) {

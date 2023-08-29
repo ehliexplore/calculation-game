@@ -85,7 +85,7 @@ body {
 }
 
 #countdown-transform {
-    transform: scale(1.05);
+    transform: scale(1.02);
     font-weight: bold;
 }
 
@@ -95,5 +95,6 @@ body {
 
 .countdown-style-green, .countdown-style-red {
     margin-top: 30px;
+    font-weight: bold;
 }
 

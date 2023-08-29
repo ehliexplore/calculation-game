@@ -10,6 +10,17 @@ function App() {
         timeLeft: 30,
     });
 
+    const [showMessage, setShowMessage] = React.useState(true);
+
+    React.useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowMessage(false);
+        }, 3000);
+
+        return () => clearTimeout(time);
+    }, []);
+
+
     React.useEffect(() => {
         const timer = setInterval(() => {
             setState(prevState => ({
@@ -114,6 +125,10 @@ function App() {
 
     return (
         <div>
+            {showMessage && <div className="initial-message">Answer 10 questions to win</div>}
+
+
+
             <div className={state.incorrect ? "incorrect" : ""} id="problem">{state.num1} {state.operation} {state.num2}</div>
 
             <div className={"input-and-button"}>

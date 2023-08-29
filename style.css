@@ -1,6 +1,12 @@
 body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
     background-color: gold;
     background: radial-gradient(circle, white, yellow, black);
+    height: 600px;
 }
 
 #app {
@@ -10,6 +16,7 @@ body {
 
 #problem {
     font-size: 72px;
+    margin-bottom: 30px;
 }
 
 .incorrect {
@@ -20,3 +27,35 @@ body {
     font-size: 72px;
     color: green;
 }
+
+.input-and-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-style {
+    height: 45px;
+    width: 150px;
+    border-radius: 10px;
+    border-width: 1px;
+    font-size: 25px;
+    
+}
+
+.enter-button {
+    height: 50px;
+    width: 70px;
+    border: none;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.score {
+    font-weight: bold;
+    margin-top: 30px;
+}
+

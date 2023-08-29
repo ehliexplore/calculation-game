@@ -86,9 +86,13 @@ function App() {
     return (
         <div>
             <div className={state.incorrect ? "incorrect" : ""} id="problem">{state.num1} {state.operation} {state.num2}</div>
-            <input autoFocus={true} onKeyPress={inputKeyPress} onChange={updateResponse} value={state.response} />
-            <button onClick={checkAnswer}>Enter</button>
-            <div>Score: {state.score}</div>
+
+            <div className={"input-and-button"}>
+                <input className={"input-style"} autoFocus={true} onKeyPress={inputKeyPress} onChange={updateResponse} value={state.response} />
+                <button className={"enter-button"} onClick={checkAnswer}>Enter</button>
+            </div>
+
+            <div className={"score"}>Score: {state.score}</div>
         </div>
     );
 }

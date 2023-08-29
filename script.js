@@ -87,7 +87,7 @@ function App() {
         })
     }
 
-    if (state.score === 5) {
+    if (state.score === 10) {
         document.body.style.background = "radial-gradient(circle, green, white)";
         return (
             <div>
@@ -125,7 +125,7 @@ function App() {
 
             <div className={"score"}>Score: {state.score}</div>
 
-            <div>Time left: {state.timeLeft} seconds</div>
+            <div className={state.timeLeft <= 10 ? "countdown-style-red" : "countdown-style-green"} id={state.timeLeft === 10? "countdown-transform" : ""}>Time left: {state.timeLeft} seconds</div>
         </div>
     );
 }

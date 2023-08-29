@@ -80,3 +80,20 @@ body {
     margin-top: 30px;
 }
 
+.countdown-style-green {
+    color: green;
+}
+
+#countdown-transform {
+    transform: scale(1.05);
+    font-weight: bold;
+}
+
+.countdown-style-red {
+    color: red;
+}
+
+.countdown-style-green, .countdown-style-red {
+    margin-top: 30px;
+}
+

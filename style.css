@@ -111,3 +111,11 @@ body {
     font-weight: bold;
 }
 
+.line-animation {
+    height: 5px;
+    background-color: blue;
+    transition: all 1s linear;
+    margin-top: 30px;
+}
+
+

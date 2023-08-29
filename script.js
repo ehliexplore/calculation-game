@@ -139,6 +139,15 @@ function App() {
             <div className={"score"}>Score: {state.score}</div>
 
             <div className={state.timeLeft <= 10 ? "countdown-style-red" : "countdown-style-green"} id={state.timeLeft === 10? "countdown-transform" : ""}>Time left: {state.timeLeft} seconds</div>
+
+            <div className="line-animation" 
+            style={{ 
+             marginLeft: `${(1 - state.timeLeft / 30) * 50}%`,
+             marginRight: `${(1 - state.timeLeft / 30) * 50}%`
+            }}
+            >
+                </div>
+
         </div>
     );
 }

@@ -1,0 +1,22 @@
+body {
+    background-color: gold;
+    background: radial-gradient(circle, white, yellow, black);
+}
+
+#app {
+    text-align: center;
+    font-family: sans-serif;
+}
+
+#problem {
+    font-size: 72px;
+}
+
+.incorrect {
+    color: red;
+}
+
+#winner {
+    font-size: 72px;
+    color: green;
+}

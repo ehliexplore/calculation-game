@@ -4,7 +4,6 @@ body {
     align-items: center;
     
 
-    background-color: gold;
     background: radial-gradient(circle, white, yellow, black);
     height: 600px;
 }
@@ -26,6 +25,11 @@ body {
 #winner {
     font-size: 72px;
     color: green;
+}
+
+#loser {
+    font-size: 72px;
+    color: white;
 }
 
 .input-and-button {

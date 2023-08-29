@@ -87,12 +87,21 @@ function App() {
         })
     }
 
-    if (state.score === 10 || state.timeLeft <= 0) {
+    if (state.score === 10) {
         return (
             <div id="winner">
-                {state.score === 10 ? "You won!" : "Game Over"}
+                You win!
             </div>
         );
+    }
+
+    if (state.score <= -5 || state.timeLeft <= 0) {
+        document.body.style.background = "radial-gradient(circle, red, white)";
+        return (
+            <div id="loser">
+                Game Over
+            </div>
+        )
     }
 
 

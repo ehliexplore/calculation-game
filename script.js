@@ -20,32 +20,32 @@ function App() {
         return Number(number.toFixed(decimals));
     }
 
-    function inputKeyPress(event) {
-        if (event.key === "Enter") {
-            const answer = roundNumber(parseFloat(state.response));
-            let correctAnswer;
+    function checkAnswer(event) {
+        
+        const answer = roundNumber(parseFloat(state.response));
+        let correctAnswer;
 
-            switch(state.operation) {
-                case '+': correctAnswer = state.num1 + state.num2; break;
-                case '-': correctAnswer = state.num1 - state.num2; break;
-                case '*': correctAnswer = state.num1 * state.num2; break;
-                case '/': correctAnswer = state.num1 / state.num2; break;         
-            }
+        switch(state.operation) {
+            case '+': correctAnswer = state.num1 + state.num2; break;
+            case '-': correctAnswer = state.num1 - state.num2; break;
+            case '*': correctAnswer = state.num1 * state.num2; break;
+            case '/': correctAnswer = state.num1 / state.num2; break;         
+        }
 
-            correctAnswer = roundNumber(correctAnswer);
+        correctAnswer = roundNumber(correctAnswer);
 
-           if (Math.abs(correctAnswer - answer) < 1e-9) {
+        if (Math.abs(correctAnswer - answer) < 1e-9) {
 
-            // User got the question right
-            setState({
-                ...state,
-                num1: Math.ceil(Math.random() * 10),
-                num2: Math.ceil(Math.random() * 10),
-                score: state.score +1,
-                response: "",
-                incorrect: false,
-                
-            });
+        // User got the question right
+        setState({
+            ...state,
+            num1: Math.ceil(Math.random() * 10),
+            num2: Math.ceil(Math.random() * 10),
+            score: state.score +1,
+            response: "",
+            incorrect: false,
+            
+        });
 
            } else {
             // User got the question wrong
@@ -57,6 +57,13 @@ function App() {
             });
 
            }
+        }
+    
+
+
+    function inputKeyPress(event) {
+        if (event.key === "Enter") {
+            checkAnswer();
         }
     }
 
@@ -80,9 +87,9 @@ function App() {
         <div>
             <div className={state.incorrect ? "incorrect" : ""} id="problem">{state.num1} {state.operation} {state.num2}</div>
             <input autoFocus={true} onKeyPress={inputKeyPress} onChange={updateResponse} value={state.response} />
+            <button onClick={checkAnswer}>Enter</button>
             <div>Score: {state.score}</div>
         </div>
-    
     );
 }
 

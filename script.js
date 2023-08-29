@@ -87,20 +87,29 @@ function App() {
         })
     }
 
-    if (state.score === 10) {
+    if (state.score === 5) {
+        document.body.style.background = "radial-gradient(circle, green, white)";
         return (
-            <div id="winner">
-                You win!
+            <div>
+                <div id="winner">
+                    You win!
+                </div>
+                <button className={"play-again-button"} onClick={() => window.location.reload()}>Play again</button>
             </div>
+
         );
     }
 
     if (state.score <= -5 || state.timeLeft <= 0) {
         document.body.style.background = "radial-gradient(circle, red, white)";
         return (
-            <div id="loser">
-                Game Over
+            <div>
+                <div id="loser">
+                    Game Over
+                </div>
+                <button className={"play-again-button"} onClick={() => window.location.reload()}>Play again</button>
             </div>
+
         )
     }
 

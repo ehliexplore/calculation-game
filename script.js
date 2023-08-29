@@ -56,6 +56,7 @@ function App() {
             score: state.score +1,
             response: "",
             incorrect: false,
+            timeLeft: 30,
             
         });
 
@@ -89,7 +90,7 @@ function App() {
     if (state.score === 10 || state.timeLeft <= 0) {
         return (
             <div id="winner">
-                {state.score === 10 ? "You won!" : "Time's up!"}
+                {state.score === 10 ? "You won!" : "Game Over"}
             </div>
         );
     }

@@ -13,6 +13,19 @@ function App() {
         timeLeft: 30,
     });
 
+
+    // location
+    const [locale, setLocale] = React.useState('en-US');
+
+    function handleLocaleChange(newLocale) {
+        setLocale(newLocale);
+    }
+
+    function formatNumber(num) {
+        return new Intl.NumberFormat(locale).format(num);
+    }
+
+
     const [showMessage, setShowMessage] = React.useState(true);
 
     React.useEffect(() => {
@@ -130,9 +143,13 @@ function App() {
 
     return (
         <div>
+            {/* New dropdown for selecting locale */}
+            <select onChange={(e) => handleLocaleChange(e.target.value)} value={locale}>
+                <option value="en-US">American</option>
+                <option value="pt-BR">Brazilian</option>
+            </select>
+
             {showMessage && <div className="initial-message">Answer 10 questions to win</div>}
-
-
 
             <div className={state.incorrect ? "incorrect" : ""} id="problem">{state.num1} {state.operation} {state.num2}</div>
 

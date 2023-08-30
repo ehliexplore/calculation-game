@@ -21,6 +21,34 @@ function App() {
         setLocale(newLocale);
     }
 
+    const translations = {
+        'en-US': {
+            locationSelect: 'Location: ',
+            enter: 'Enter',
+            score: 'Score',
+            win: 'You win!',
+            lose: 'You lost',
+            playAgain: 'Play again',
+            initialMessage: 'Answer 10 questions to win',
+            timeLeft: 'Time left',
+            seconds: 'seconds',
+        },
+        'pt-BR': {
+            locationSelect: 'Localização',
+            enter: 'Enviar',
+            score: 'Pontuação',
+            win: 'Você ganhou!',
+            lose: 'Você perdeu',
+            playAgain: 'Jogar novamente',
+            initialMessage: 'Responda 10 questões para vencer',
+            timeLeft: 'Tempo restante',
+            seconds: 'segundos',
+        }
+    };
+
+    function t(key) {
+        return translations[locale][key] || key;
+    }
 
 
     const [showMessage, setShowMessage] = React.useState(true);
@@ -123,9 +151,9 @@ function App() {
         return (
             <div>
                 <div id="winner">
-                    You win!
+                    {t('win')}
                 </div>
-                <button className={"play-again-button"} onClick={() => window.location.reload()}>Play again</button>
+                <button className={"play-again-button"} onClick={() => window.location.reload()}>{t('playAgain')}</button>
             </div>
 
         );
@@ -136,11 +164,10 @@ function App() {
         return (
             <div>
                 <div id="loser">
-                    Game Over
+                    {t('lose')}
                 </div>
-                <button className={"play-again-button"} onClick={() => window.location.reload()}>Play again</button>
+                <button className={"play-again-button"} onClick={() => window.location.reload()}>{t('playAgain')}</button>
             </div>
-
         )
     }
 
@@ -149,26 +176,25 @@ function App() {
         <div>
             {/* New dropdown for selecting locale */}
             <div className="select-location-div">
-                <div className="select-location-title">Select location:</div>
+                <div className="select-location-title">{t('locationSelect')}</div>
                 <select className="select-location-dropdown" onChange={(e) => handleLocaleChange(e.target.value)} value={locale}>
                     <option value="en-US">USA</option>
                     <option value="pt-BR">Brasil</option>
                 </select> 
             </div>
 
-
-            {showMessage && <div className="initial-message">Answer 10 questions to win</div>}
+            {showMessage && <div className="initial-message">{t('initialMessage')}</div>}
 
             <div className={state.incorrect ? "incorrect" : ""} id="problem">{state.num1} {state.operation} {state.num2}</div>
 
             <div className={"input-and-button"}>
                 <input className={"input-style"} autoFocus={true} onKeyPress={inputKeyPress} onChange={updateResponse} value={state.response} />
-                <button className={"enter-button"} onClick={checkAnswer}>Enter</button>
+                <button className={"enter-button"} onClick={checkAnswer}>{t('enter')}</button>
             </div>
 
-            <div className={"score"}>Score: {state.score}</div>
+            <div className={"score"}>{t('score')}: {state.score}</div>
 
-            <div className={state.timeLeft <= 10 ? "countdown-style-red" : "countdown-style-green"} id={state.timeLeft === 10? "countdown-transform" : ""}>Time left: {state.timeLeft} seconds</div>
+            <div className={state.timeLeft <= 10 ? "countdown-style-red" : "countdown-style-green"} id={state.timeLeft === 10? "countdown-transform" : ""}>{t('timeLeft')}: {state.timeLeft} {t('seconds')}</div>
 
             <div className={state.timeLeft >= 5 ? "line-animation" : "line-animation-end"} 
             style={{ 

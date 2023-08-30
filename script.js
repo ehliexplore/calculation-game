@@ -17,7 +17,7 @@ function App() {
             setShowMessage(false);
         }, 3000);
 
-        return () => clearTimeout(time);
+        return () => clearTimeout(timer);
     }, []);
 
 

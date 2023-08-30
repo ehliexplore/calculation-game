@@ -1,5 +1,8 @@
 function App() {
 
+    const correctSound = new Audio('audio/right.mp3');
+    const incorrectSound = new Audio('audio/wrong.mp3');
+
     const [state, setState] = React.useState({
         num1: 2,
         num2: 4,
@@ -59,27 +62,29 @@ function App() {
 
         if (Math.abs(correctAnswer - answer) < 1e-9) {
 
-        // User got the question right
-        setState({
-            ...state,
-            num1: Math.ceil(Math.random() * 10),
-            num2: Math.ceil(Math.random() * 10),
-            score: state.score +1,
-            response: "",
-            incorrect: false,
-            timeLeft: 30,
-            
-        });
-
-           } else {
-            // User got the question wrong
+            // User got the question right
+            correctSound.play();
             setState({
                 ...state,
-                score: state.score - 1,
+                num1: Math.ceil(Math.random() * 10),
+                num2: Math.ceil(Math.random() * 10),
+                score: state.score +1,
                 response: "",
-                incorrect: true
+                incorrect: false,
+                timeLeft: 30,
+                
             });
-           }
+
+            } else {
+                // User got the question wrong
+                incorrectSound.play();
+                setState({
+                    ...state,
+                    score: state.score - 1,
+                    response: "",
+                    incorrect: true
+                });
+            }
         }
 
 

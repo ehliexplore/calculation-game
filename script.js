@@ -14,16 +14,13 @@ function App() {
     });
 
 
-    // location
+    // for change location
     const [locale, setLocale] = React.useState('en-US');
 
     function handleLocaleChange(newLocale) {
         setLocale(newLocale);
     }
 
-    function formatNumber(num) {
-        return new Intl.NumberFormat(locale).format(num);
-    }
 
 
     const [showMessage, setShowMessage] = React.useState(true);
@@ -59,9 +56,16 @@ function App() {
         return Number(number.toFixed(decimals));
     }
 
+    function parseUserInput(input, locale) {
+        if (locale === 'pt-BR') {
+            input = input.replace(',', '.');
+        }
+        return parseFloat(input);
+    }
+
     function checkAnswer(event) {
         
-        const answer = roundNumber(parseFloat(state.response));
+        const answer = roundNumber(parseUserInput(state.response, locale));
         let correctAnswer;
 
         switch(state.operation) {
@@ -144,10 +148,14 @@ function App() {
     return (
         <div>
             {/* New dropdown for selecting locale */}
-            <select onChange={(e) => handleLocaleChange(e.target.value)} value={locale}>
-                <option value="en-US">American</option>
-                <option value="pt-BR">Brazilian</option>
-            </select>
+            <div className="select-location-div">
+                <div className="select-location-title">Select location:</div>
+                <select className="select-location-dropdown" onChange={(e) => handleLocaleChange(e.target.value)} value={locale}>
+                    <option value="en-US">USA</option>
+                    <option value="pt-BR">Brasil</option>
+                </select> 
+            </div>
+
 
             {showMessage && <div className="initial-message">Answer 10 questions to win</div>}
 

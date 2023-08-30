@@ -15,10 +15,12 @@ function App() {
 
 
     // for change location
-    const [locale, setLocale] = React.useState('en-US');
+    const [locale, setLocale] = React.useState(localStorage.getItem('userLocale') || 'en-US');
 
     function handleLocaleChange(newLocale) {
         setLocale(newLocale);
+        localStorage.setItem('userLocale', newLocale);
+        window.location.reload();
     }
 
     const translations = {

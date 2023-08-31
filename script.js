@@ -58,7 +58,7 @@ function App() {
     React.useEffect(() => {
         const timer = setTimeout(() => {
             setShowMessage(false);
-        }, 3500);
+        }, 5000);
 
         return () => clearTimeout(timer);
     }, []);

@@ -4,8 +4,8 @@ function App() {
     const incorrectSound = new Audio('audio/wrong.mp3');
 
     const [state, setState] = React.useState({
-        num1: 2,
-        num2: 4,
+        num1: Math.ceil(Math.random() * 20),
+        num2: Math.ceil(Math.random() * 10),
         response: "",
         score: 0,
         incorrect: false,
@@ -80,13 +80,13 @@ function App() {
         const operations = ['+', '-', '*', '/'];
         const randomOperation = operations[Math.floor(Math.random() * operations.length)];
 
-        let newNum1 = Math.ceil(Math.random() * 10);
+        let newNum1 = Math.ceil(Math.random() * 20);
         let newNum2 = Math.ceil(Math.random() * 10);
 
         // If division, make sure the result is an integer
         if (randomOperation === '/') {
             while (newNum1 % newNum2 !== 0) {
-                newNum1 = Math.ceil(Math.random() * 10);
+                newNum1 = Math.ceil(Math.random() * 20);
                 newNum2 = Math.ceil(Math.random() * 10);
             }
         }
@@ -130,7 +130,7 @@ function App() {
             correctSound.play();
             setState({
                 ...state,
-                num1: Math.ceil(Math.random() * 10),
+                num1: Math.ceil(Math.random() * 20),
                 num2: Math.ceil(Math.random() * 10),
                 score: state.score +1,
                 response: "",

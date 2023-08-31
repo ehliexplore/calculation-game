@@ -74,7 +74,7 @@ function App() {
         }, 1000);
 
         return () => clearInterval(timer);
-    })
+    }, [state.timeLeft]);
 
     React.useEffect(() => {
         // Generate a random operator each time num1 or num2 changes

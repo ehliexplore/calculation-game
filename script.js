@@ -79,7 +79,24 @@ function App() {
         // Generate a random operator each time num1 or num2 changes
         const operations = ['+', '-', '*', '/'];
         const randomOperation = operations[Math.floor(Math.random() * operations.length)];
-        setState((prevState) => ({ ...prevState, operation: randomOperation }));
+
+        let newNum1 = Math.ceil(Math.random() * 10);
+        let newNum2 = Math.ceil(Math.random() * 10);
+
+        // If division, make sure the result is an integer
+        if (randomOperation === '/') {
+            while (newNum1 % newNum2 !== 0) {
+                newNum1 = Math.ceil(Math.random() * 10);
+                newNum2 = Math.ceil(Math.random() * 10);
+            }
+        }
+
+        setState((prevState) => ({ 
+            ...prevState, 
+            operation: randomOperation,
+            num1: newNum1,
+            num2: newNum2 
+        }));
     }, [state.num1, state.num2]);
 
     function roundNumber(number, decimals = 9) {

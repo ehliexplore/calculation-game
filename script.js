@@ -176,14 +176,7 @@ function App() {
 
     return (
         <div>
-            {/* New dropdown for selecting locale */}
-            <div className="select-location-div">
-                <div className="select-location-title">{t('locationSelect')}</div>
-                <select className="select-location-dropdown" onChange={(e) => handleLocaleChange(e.target.value)} value={locale}>
-                    <option value="en-US">USA</option>
-                    <option value="pt-BR">Brasil</option>
-                </select> 
-            </div>
+
 
             {showMessage && <div className="initial-message">{t('initialMessage')}</div>}
 
@@ -204,7 +197,16 @@ function App() {
              marginRight: `${(1 - state.timeLeft / 30) * 50}%`
             }}
             >
-                </div>
+            </div>
+
+            {/* New dropdown for selecting locale */}
+            <div className="select-location-div">
+                <div className="select-location-title">{t('locationSelect')}</div>
+                <select className="select-location-dropdown" onChange={(e) => handleLocaleChange(e.target.value)} value={locale}>
+                    <option value="en-US">USA</option>
+                    <option value="pt-BR">Brasil</option>
+                </select> 
+            </div>
 
         </div>
     );

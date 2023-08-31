@@ -15,7 +15,7 @@ function App() {
 
 
     // for change location
-    const [locale, setLocale] = React.useState(localStorage.getItem('userLocale') || 'en-US');
+    const [locale, setLocale] = React.useState(localStorage.getItem('userLocale') || 'pt-BR');
 
     function handleLocaleChange(newLocale) {
         setLocale(newLocale);
